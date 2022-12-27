@@ -37,7 +37,7 @@ export class LoginComponent extends AppComponentBase {
         this.submitting = true;
         this.authService.authenticate(() => {
             this.submitting = false;
-            this.router.navigate(['/app/home']).then();
+            this.router.navigate(['/app/files']).then();
         });
     }
 }
