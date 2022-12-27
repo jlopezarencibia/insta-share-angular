@@ -3,7 +3,7 @@
         File information
     </div>
     <div class="card-body">
-        <ng-container *ngIf="file">
+        <ng-container *ngIf="file; else noFileSelected">
             <div class="file-info">
                 <app-item-two-lines title="File name:"
                                     [value]="file.fileName">
@@ -22,7 +22,8 @@
             <hr>
             <ng-container *ngIf="!isEditing; else editForm">
                 <div class="d-flex align-items-center">
-                    <button class="btn btn-primary w-100 mr-2 d-flex align-items-center justify-content-center" (click)="download()">
+                    <button class="btn btn-primary w-100 mr-2 d-flex align-items-center justify-content-center"
+                            (click)="download()">
                         <i class="fas fa-download mr-1"></i>Download
                     </button>
                     <button class="btn btn-success" (click)="goToEdit()">
@@ -31,18 +32,35 @@
                 </div>
             </ng-container>
             <ng-template #editForm>
-                <form>
-                    <div class="small">Rename:</div>
-                    <input class="form-control" name="newName" id="newName" [(ngModel)]="newName">
-                </form>
-                <div class="d-flex align-items-center mt-2">
-                    <button class="btn btn-success w-100 mr-2 d-flex align-items-center justify-content-center" (click)="edit()">
-                        <i class="fas fa-check mr-1"></i>Confirm
-                    </button>
-                    <button class="btn btn-danger" (click)="cancelEdit()"><i class="fas fa-cancel"></i></button>
-                </div>
+                <ng-container *ngIf="!loading; else loadingView">
+                    <form>
+                        <div class="small">Rename:</div>
+                        <input class="form-control" name="newName" id="newName" [(ngModel)]="newName">
+                    </form>
+                    <div class="d-flex align-items-center mt-2">
+                        <button class="btn btn-success w-100 mr-2 d-flex align-items-center justify-content-center"
+                                (click)="edit()">
+                            <i class="fas fa-check mr-1"></i>Confirm
+                        </button>
+                        <button class="btn btn-danger" (click)="cancelEdit()"><i class="fas fa-cancel"></i></button>
+                    </div>
+                </ng-container>
             </ng-template>
         </ng-container>
-        <app-section-loading></app-section-loading>
+        <ng-template #loadingView>
+            <app-section-loading></app-section-loading>
+        </ng-template>
+        <ng-template #noFileSelected>
+            <div class="d-flex align-items-center justify-content-center mt-3">
+                <div class="text-center text-gray">
+                    <div>
+                        <i class="fas fa-file-circle-question fa-2x"></i>
+                    </div>
+                    <p>
+                        No file selected
+                    </p>
+                </div>
+            </div>
+        </ng-template>
     </div>
 </div>

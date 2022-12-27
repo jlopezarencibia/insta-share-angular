@@ -31,9 +31,18 @@ export class FileInformationComponent {
     }
 
     async edit() {
-        this.file = await firstValueFrom(this.fileService.rename(this.file.id, this.newName));
+        this.loading = true;
+        await firstValueFrom(this.fileService.rename(this.file.id, this.newName))
+            .catch(() => {
+                this.newName = this.file.fileName;
+                this.cancelEdit();
+                this.loading = false;
+                return;
+            });
+        this.file.fileName = this.newName;
         this.action.emit(FileAction.Edit);
         this.cancelEdit();
+        this.loading = false;
     }
 
     download() {

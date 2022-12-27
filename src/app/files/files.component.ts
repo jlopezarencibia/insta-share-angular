@@ -46,6 +46,7 @@ export class FilesComponent extends AppComponentBase implements OnInit {
     async refreshList(action?: FileAction) {
         this.loading = true;
         this.fileList = await firstValueFrom(this.fileService.getAllFilesByUserId(this.appSession.userId));
+        this.sortList();
         this.loading = false;
     }
 
