@@ -1,3 +1,10 @@
 .file-list:last-child hr {
     display: none;
 }
+
+.item-selected {
+    transition: .2s;
+    /*border: 1px solid #00000010;*/
+    background-color: #00000005;
+    border-radius: .5rem;
+}

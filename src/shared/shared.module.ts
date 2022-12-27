@@ -23,6 +23,7 @@ import { SizePipe } from './pipes/size.pipe';
 import { StatusPipe } from './pipes/status.pipe';
 import { FileInformationComponent } from './components/file-information/file-information.component';
 import {FormsModule} from '@angular/forms';
+import { SectionLoadingComponent } from './components/section-loading/section-loading.component';
 
 @NgModule({
     imports: [
@@ -43,7 +44,8 @@ import {FormsModule} from '@angular/forms';
         ItemTwoLinesComponent,
         SizePipe,
         StatusPipe,
-        FileInformationComponent
+        FileInformationComponent,
+        SectionLoadingComponent
     ],
     exports: [
         AbpPaginationControlsComponent,

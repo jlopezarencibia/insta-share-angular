@@ -2,14 +2,14 @@
     <div class="row mx-0 justify-content-start">
         <div class="col-12 col-md-9 d-flex align-items-center justify-content-between">
             <div>
-            <form>
-                <input type="file" #inputFile name="inputFile" multiple="multiple" class="d-none"
-                       (change)="fileChanged($event.target.files)">
-            </form>
-            <button class='btn btn-success d-flex align-items-center' (click)='inputFile.click()'>
-                <i class="fas fa-plus mr-1"></i>
-                <span class='d-none d-md-block ms-2'>Upload</span>
-            </button>
+                <form>
+                    <input type="file" #inputFile name="inputFile" multiple="multiple" class="d-none"
+                           (change)="fileChanged($event.target.files)">
+                </form>
+                <button class='btn btn-success d-flex align-items-center' (click)='inputFile.click()'>
+                    <i class="fas fa-plus mr-1"></i>
+                    <span class='d-none d-md-block ms-2'>Upload</span>
+                </button>
             </div>
             <div *ngIf="fileList">
                 Files: {{fileList.length}}
@@ -21,7 +21,9 @@
         <div class="row mx-0">
             <div class="col-12 col-md-9">
                 <div *ngFor="let file of fileList" class="file-list">
-                    <app-item-file [userFile]="file" (whenSelect)="displayInformation($event)"></app-item-file>
+                    <div [class.item-selected]="file.id === selectedFile?.id">
+                        <app-item-file [userFile]="file" (whenSelect)="displayInformation($event)"></app-item-file>
+                    </div>
                     <hr class="my-2">
                 </div>
             </div>

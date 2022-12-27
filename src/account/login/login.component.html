@@ -68,16 +68,18 @@
         <button
           type="submit"
           class="btn btn-primary btn-block"
-          [disabled]="!loginForm.form.valid || submitting"
-        >
+          [disabled]="!loginForm.form.valid || submitting">
           {{ "LogIn" | localize }}
         </button>
       </div>
     </div>
   </form>
+    <hr>
+
+  <p class="mb-1">
   <p *ngIf="isSelfRegistrationAllowed" class="mb-1">
-    <a [routerLink]="['../register']">
-      <i class="fa fa-plus-circle"></i> {{ "Register" | localize }}
+    <span>Not an user? </span>
+      <a [routerLink]="['../register']">{{ "Register" | localize }}
     </a>
   </p>
 </div>

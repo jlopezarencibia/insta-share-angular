@@ -49,6 +49,7 @@ export class RegisterComponent extends AppComponentBase {
         this.authService.authenticateModel.password = this.model.password;
         this.authService.authenticate(() => {
           this.saving = false;
+          this._router.navigateByUrl('/app/home').then();
         });
       });
   }
