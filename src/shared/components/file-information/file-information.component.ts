@@ -1,7 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {BasicUaserFileDto, UserFileServiceProxy} from '@shared/service-proxies/service-proxies';
 import {firstValueFrom} from '@node_modules/rxjs';
-import {browser} from '@node_modules/protractor';
 
 @Component({
     selector: 'app-file-information',
@@ -50,11 +49,12 @@ export class FileInformationComponent {
         this.loading = true;
         const file = await firstValueFrom(this.fileService.get(this.file.id));
         console.log(file);
-        const blob = new Blob([file.fileBytes]);
+        const fileObj = new Blob([this.base64ToArrayBuffer(file.fileBytes)], {type: `application/${this.getFileExtension()}`});
         const link = document.createElement('a');
-        link.href = window.URL.createObjectURL(blob);
+        link.href = window.URL.createObjectURL(fileObj);
         link.download = file.fileName;
         link.click();
+        link.remove();
         this.action.emit(FileAction.Download);
         this.loading = false;
     }
@@ -62,8 +62,24 @@ export class FileInformationComponent {
     async remove() {
         this.loading = true;
         await firstValueFrom(this.fileService.delete(this.file.id));
+        this.file = undefined;
         this.action.emit(FileAction.Remove);
         this.loading = false;
+    }
+
+    private getFileExtension(): string {
+        const src = this.file.fileName.split('.');
+        return src[src.length - 1];
+    }
+
+    private base64ToArrayBuffer(base64) {
+        const binaryString = window.atob(base64);
+        const binaryLen = binaryString.length;
+        const bytes = new Uint8Array(binaryLen);
+        for (let i = 0; i < binaryLen; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return bytes;
     }
 }
 
