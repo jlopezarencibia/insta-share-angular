@@ -39,6 +39,7 @@ import {SidebarUserPanelComponent} from './layout/sidebar-user-panel.component';
 import {SidebarMenuComponent} from './layout/sidebar-menu.component';
 import {FilesComponent} from './files/files.component';
 import {SharedModule} from '../shared/shared.module';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 @NgModule({
     declarations: [
@@ -70,6 +71,7 @@ import {SharedModule} from '../shared/shared.module';
         SidebarUserPanelComponent,
         SidebarMenuComponent,
         FilesComponent,
+        UserAccountComponent,
     ],
     imports: [
         CommonModule,
