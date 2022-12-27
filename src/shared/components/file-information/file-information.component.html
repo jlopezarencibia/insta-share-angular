@@ -1,0 +1,47 @@
+<div class="card">
+    <div class="card-header">
+        File information
+    </div>
+    <div class="card-body">
+        <ng-container *ngIf="file">
+            <div class="file-info">
+                <app-item-two-lines title="File name:"
+                                    [value]="file.fileName">
+                </app-item-two-lines>
+            </div>
+            <div class="file-info">
+                <app-item-two-lines title="Size:"
+                                    [value]="(file.fileSize | size)">
+                </app-item-two-lines>
+            </div>
+            <div class="file-info">
+                <app-item-two-lines title="Status:"
+                                    [value]="(file.fileStatus | status)">
+                </app-item-two-lines>
+            </div>
+            <hr>
+            <ng-container *ngIf="!isEditing; else editForm">
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-primary w-100 mr-2 d-flex align-items-center justify-content-center" (click)="download()">
+                        <i class="fas fa-download mr-1"></i>Download
+                    </button>
+                    <button class="btn btn-success" (click)="goToEdit()">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                </div>
+            </ng-container>
+            <ng-template #editForm>
+                <form>
+                    <div class="small">Rename:</div>
+                    <input class="form-control" name="newName" id="newName" [(ngModel)]="newName">
+                </form>
+                <div class="d-flex align-items-center mt-2">
+                    <button class="btn btn-success w-100 mr-2 d-flex align-items-center justify-content-center" (click)="edit()">
+                        <i class="fas fa-check mr-1"></i>Confirm
+                    </button>
+                    <button class="btn btn-danger" (click)="cancelEdit()"><i class="fas fa-cancel"></i></button>
+                </div>
+            </ng-template>
+        </ng-container>
+    </div>
+</div>

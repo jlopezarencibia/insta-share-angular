@@ -21,12 +21,15 @@ import { ItemFileComponent } from './items/item-file/item-file.component';
 import { ItemTwoLinesComponent } from './items/item-two-lines/item-two-lines.component';
 import { SizePipe } from './pipes/size.pipe';
 import { StatusPipe } from './pipes/status.pipe';
+import { FileInformationComponent } from './components/file-information/file-information.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        FormsModule
     ],
     declarations: [
         AbpPaginationControlsComponent,
@@ -39,7 +42,8 @@ import { StatusPipe } from './pipes/status.pipe';
         ItemFileComponent,
         ItemTwoLinesComponent,
         SizePipe,
-        StatusPipe
+        StatusPipe,
+        FileInformationComponent
     ],
     exports: [
         AbpPaginationControlsComponent,
@@ -52,7 +56,8 @@ import { StatusPipe } from './pipes/status.pipe';
         ItemFileComponent,
         ItemTwoLinesComponent,
         SizePipe,
-        StatusPipe
+        StatusPipe,
+        FileInformationComponent
     ]
 })
 export class SharedModule {

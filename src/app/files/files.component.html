@@ -11,7 +11,7 @@
                 <span class='d-none d-md-block ms-2'>Upload</span>
             </button>
             </div>
-            <div>
+            <div *ngIf="fileList">
                 Files: {{fileList.length}}
             </div>
         </div>
@@ -26,35 +26,7 @@
                 </div>
             </div>
             <div class="d-none d-md-block col-md-3">
-                <div class="card">
-                    <div class="card-header">
-                        File information
-                    </div>
-                    <div class="card-body">
-                        <ng-container *ngIf="selectedFile">
-                            <div class="file-info">
-                                <app-item-two-lines title="File name:"
-                                                    [value]="selectedFile.fileName">
-                                </app-item-two-lines>
-                            </div>
-                            <div class="file-info">
-                                <app-item-two-lines title="Size:"
-                                                    [value]="(selectedFile.fileSize | size)">
-                                </app-item-two-lines>
-                            </div>
-                            <div class="file-info">
-                                <app-item-two-lines title="Status:"
-                                                    [value]="(selectedFile.fileStatus | status)">
-                                </app-item-two-lines>
-                            </div>
-                            <hr>
-                            <div class="d-flex align-items-center">
-                                <button class="btn btn-primary w-100 mr-2">Download</button>
-                                <button class="btn btn-success">Edit</button>
-                            </div>
-                        </ng-container>
-                    </div>
-                </div>
+                <app-file-information [file]="selectedFile" (action)="refreshList($event)"></app-file-information>
             </div>
         </div>
     </ng-container>
