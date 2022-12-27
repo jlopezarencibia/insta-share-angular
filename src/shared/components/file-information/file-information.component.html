@@ -20,16 +20,18 @@
                 </app-item-two-lines>
             </div>
             <hr>
-            <ng-container *ngIf="!isEditing; else editForm">
-                <div class="d-flex align-items-center">
-                    <button class="btn btn-primary w-100 mr-2 d-flex align-items-center justify-content-center"
-                            (click)="download()">
-                        <i class="fas fa-download mr-1"></i>Download
-                    </button>
-                    <button class="btn btn-success" (click)="goToEdit()">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                </div>
+            <ng-container *ngIf="!loading; else loadingView">
+                <ng-container *ngIf="!isEditing; else editForm">
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-primary w-100 mr-2 d-flex align-items-center justify-content-center"
+                                (click)="download()">
+                            <i class="fas fa-download mr-1"></i>Download
+                        </button>
+                        <button class="btn btn-success" (click)="goToEdit()">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </ng-container>
             </ng-container>
             <ng-template #editForm>
                 <ng-container *ngIf="!loading; else loadingView">
@@ -45,7 +47,7 @@
                         <button class="btn btn-danger" (click)="remove()"><i class="fas fa-trash-alt"></i></button>
                     </div>
                     <button class="btn btn-outline-secondary w-100 mt-2" (click)="cancelEdit()">
-                       <span>Cancel</span>
+                        <span>Cancel</span>
                     </button>
                 </ng-container>
             </ng-template>
