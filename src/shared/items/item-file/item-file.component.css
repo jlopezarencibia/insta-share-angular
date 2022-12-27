@@ -1,0 +1,19 @@
+.item-file {
+    transition: .2s;
+    border: 1px solid #00000000;
+    border-radius: .5rem;
+    padding: .5rem;
+    background-color: #00000000;
+    cursor: pointer;
+}
+.item-file:hover {
+    transition: .2s;
+    border: 1px solid #00000010;
+    background-color: #00000005;
+}
+
+.file-icon {
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+}

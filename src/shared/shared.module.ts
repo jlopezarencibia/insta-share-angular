@@ -17,6 +17,7 @@ import { LayoutStoreService } from './layout/layout-store.service';
 
 import { BusyDirective } from './directives/busy.directive';
 import { EqualValidator } from './directives/equal-validator.directive';
+import { ItemFileComponent } from './items/item-file/item-file.component';
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { EqualValidator } from './directives/equal-validator.directive';
         AbpModalFooterComponent,
         LocalizePipe,
         BusyDirective,
-        EqualValidator
+        EqualValidator,
+        ItemFileComponent
     ],
     exports: [
         AbpPaginationControlsComponent,
@@ -40,7 +42,8 @@ import { EqualValidator } from './directives/equal-validator.directive';
         AbpModalFooterComponent,
         LocalizePipe,
         BusyDirective,
-        EqualValidator
+        EqualValidator,
+        ItemFileComponent
     ]
 })
 export class SharedModule {

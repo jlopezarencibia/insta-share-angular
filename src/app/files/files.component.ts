@@ -8,10 +8,11 @@ import {firstValueFrom} from '@node_modules/rxjs';
     templateUrl: './files.component.html',
     styleUrls: ['./files.component.css']
 })
-export class FilesComponent extends AppComponentBase implements OnInit{
+export class FilesComponent extends AppComponentBase implements OnInit {
 
     loading = true;
     fileList: BasicUaserFileDto[];
+    selectedFile: BasicUaserFileDto;
 
     constructor(
         injector: Injector,
@@ -48,6 +49,14 @@ export class FilesComponent extends AppComponentBase implements OnInit{
     }
 
     sortList() {
-        this.fileList = this.fileList.sort((a, b) =>  a.fileName < b.fileName ? 1 : a.fileName === b.fileName ? 0 : -1);
+        this.fileList = this.fileList.sort((a, b) => a.fileName < b.fileName ? 1 : a.fileName === b.fileName ? 0 : -1);
+    }
+
+    clearInformation() {
+        this.selectedFile = undefined;
+    }
+
+    displayInformation(file: BasicUaserFileDto) {
+        this.selectedFile = file;
     }
 }

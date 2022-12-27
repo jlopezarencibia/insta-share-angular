@@ -1,7 +1,8 @@
 <div class="p-2 p-md-3">
     <div class="d-flex align-items-center justify-content-end">
         <form>
-            <input type="file" #inputFile name="inputFile" multiple="multiple" class="d-none" (change)="fileChanged($event.target.files)">
+            <input type="file" #inputFile name="inputFile" multiple="multiple" class="d-none"
+                   (change)="fileChanged($event.target.files)">
         </form>
         <button class='btn btn-success d-flex align-items-center' (click)='inputFile.click()'>
             <i class="fas fa-plus mr-1"></i>
@@ -10,19 +11,30 @@
     </div>
     <hr>
     <ng-container *ngIf="!loading">
-    <div class="row mx-0">
-        <div class="col-12 col-md-9">
-            <div *ngFor="let file of fileList">
-                {{file.fileName}}
+        <div class="row mx-0">
+            <div class="col-12 col-md-9">
+                <div *ngFor="let file of fileList" class="file-list">
+                    <app-item-file [userFile]="file" (whenSelect)="displayInformation($event)"></app-item-file>
+                    <hr class="my-2">
+                </div>
             </div>
-        </div>
-        <div class="d-none d-md-block col-md-3">
-            <div class="card">
-                <div class="card-body">
-
+            <div class="d-none d-md-block col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        File information
+                    </div>
+                    <div class="card-body">
+                        <ng-container *ngIf="selectedFile">
+                            <div>
+                                File name:
+                            </div>
+                            <div>
+                                {{selectedFile.fileName}}
+                            </div>
+                        </ng-container>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </ng-container>
 </div>
