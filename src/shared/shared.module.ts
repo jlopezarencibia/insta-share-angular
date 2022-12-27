@@ -18,6 +18,9 @@ import { LayoutStoreService } from './layout/layout-store.service';
 import { BusyDirective } from './directives/busy.directive';
 import { EqualValidator } from './directives/equal-validator.directive';
 import { ItemFileComponent } from './items/item-file/item-file.component';
+import { ItemTwoLinesComponent } from './items/item-two-lines/item-two-lines.component';
+import { SizePipe } from './pipes/size.pipe';
+import { StatusPipe } from './pipes/status.pipe';
 
 @NgModule({
     imports: [
@@ -33,7 +36,10 @@ import { ItemFileComponent } from './items/item-file/item-file.component';
         LocalizePipe,
         BusyDirective,
         EqualValidator,
-        ItemFileComponent
+        ItemFileComponent,
+        ItemTwoLinesComponent,
+        SizePipe,
+        StatusPipe
     ],
     exports: [
         AbpPaginationControlsComponent,
@@ -43,7 +49,10 @@ import { ItemFileComponent } from './items/item-file/item-file.component';
         LocalizePipe,
         BusyDirective,
         EqualValidator,
-        ItemFileComponent
+        ItemFileComponent,
+        ItemTwoLinesComponent,
+        SizePipe,
+        StatusPipe
     ]
 })
 export class SharedModule {

@@ -1,15 +1,22 @@
 <div class="p-2 p-md-3">
-    <div class="d-flex align-items-center justify-content-end">
-        <form>
-            <input type="file" #inputFile name="inputFile" multiple="multiple" class="d-none"
-                   (change)="fileChanged($event.target.files)">
-        </form>
-        <button class='btn btn-success d-flex align-items-center' (click)='inputFile.click()'>
-            <i class="fas fa-plus mr-1"></i>
-            <span class='d-none d-md-block ms-2'>Upload</span>
-        </button>
+    <div class="row mx-0 justify-content-start">
+        <div class="col-12 col-md-9 d-flex align-items-center justify-content-between">
+            <div>
+            <form>
+                <input type="file" #inputFile name="inputFile" multiple="multiple" class="d-none"
+                       (change)="fileChanged($event.target.files)">
+            </form>
+            <button class='btn btn-success d-flex align-items-center' (click)='inputFile.click()'>
+                <i class="fas fa-plus mr-1"></i>
+                <span class='d-none d-md-block ms-2'>Upload</span>
+            </button>
+            </div>
+            <div>
+                Files: {{fileList.length}}
+            </div>
+        </div>
     </div>
-    <hr>
+    <hr class="mb-4">
     <ng-container *ngIf="!loading">
         <div class="row mx-0">
             <div class="col-12 col-md-9">
@@ -25,11 +32,25 @@
                     </div>
                     <div class="card-body">
                         <ng-container *ngIf="selectedFile">
-                            <div>
-                                File name:
+                            <div class="file-info">
+                                <app-item-two-lines title="File name:"
+                                                    [value]="selectedFile.fileName">
+                                </app-item-two-lines>
                             </div>
-                            <div>
-                                {{selectedFile.fileName}}
+                            <div class="file-info">
+                                <app-item-two-lines title="Size:"
+                                                    [value]="(selectedFile.fileSize | size)">
+                                </app-item-two-lines>
+                            </div>
+                            <div class="file-info">
+                                <app-item-two-lines title="Status:"
+                                                    [value]="(selectedFile.fileStatus | status)">
+                                </app-item-two-lines>
+                            </div>
+                            <hr>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-primary w-100 mr-2">Download</button>
+                                <button class="btn btn-success">Edit</button>
                             </div>
                         </ng-container>
                     </div>

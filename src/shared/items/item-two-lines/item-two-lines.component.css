@@ -1,0 +1,11 @@
+.tight {
+    line-height: 1;
+}
+
+.two-lines-item {
+    margin-bottom: .5rem;
+}
+
+.two-lines-item:last-child {
+    margin-bottom: 0;
+}

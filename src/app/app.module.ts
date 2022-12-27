@@ -69,7 +69,7 @@ import {SharedModule} from '../shared/shared.module';
         SidebarLogoComponent,
         SidebarUserPanelComponent,
         SidebarMenuComponent,
-        FilesComponent
+        FilesComponent,
     ],
     imports: [
         CommonModule,

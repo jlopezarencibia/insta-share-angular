@@ -1,3 +1,11 @@
 .file-list:last-child hr {
     display: none;
 }
+
+.file-info{
+    margin-bottom: .5rem;
+}
+
+.file-info:last-child {
+    margin-bottom: 0;
+}
