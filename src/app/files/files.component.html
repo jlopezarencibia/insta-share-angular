@@ -12,12 +12,12 @@
                 </button>
             </div>
             <div *ngIf="fileList">
-                Files: {{fileList.length}}
+                <b>{{totalSize | size}}</b> total in <b>{{fileList.length}}</b> files
             </div>
         </div>
     </div>
     <hr class="mb-4">
-    <ng-container *ngIf="!loading">
+    <div [busy]="loading">
         <div class="row mx-0">
             <div class="col-12 col-md-9">
                 <div *ngFor="let file of fileList" class="file-list">
@@ -31,5 +31,5 @@
                 <app-file-information [file]="selectedFile" (action)="refreshList($event)"></app-file-information>
             </div>
         </div>
-    </ng-container>
+    </div>
 </div>

@@ -1,6 +1,15 @@
 <div class="item-file d-flex align-items-center" (click)="emitFile()">
-    <img class="file-icon rounded-circle mr-2" src="assets/img/user.png" alt="">
-    <span>
-        {{userFile.fileName}}
-    </span>
+    <div class="file-icon d-flex align-items-center justify-content-center rounded-circle mr-2" [ngClass]="bgType">
+        <!--        <i class="fas fa-file" [ngClass]="{iconType, getIconFile()}"></i>-->
+        <i class="fas" [ngClass]="iconType"></i>
+    </div>
+    <div class="flex-grow-1">
+        <div>
+            {{userFile.fileName}}
+        </div>
+        <div class="small text-muted lh-1">
+            {{userFile.fileSize | size}}
+        </div>
+    </div>
+    <i class="fas fa-check"></i>
 </div>

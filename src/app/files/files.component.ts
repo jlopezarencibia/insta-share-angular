@@ -14,6 +14,7 @@ export class FilesComponent extends AppComponentBase implements OnInit {
     loading = true;
     fileList: BasicUaserFileDto[];
     selectedFile: BasicUaserFileDto;
+    totalSize = 0;
 
     constructor(
         injector: Injector,
@@ -22,12 +23,11 @@ export class FilesComponent extends AppComponentBase implements OnInit {
     }
 
     async ngOnInit() {
-        this.fileList = await firstValueFrom(this.fileService.getAllFilesByUserId(this.appSession.userId));
-        this.sortList();
-        this.loading = false;
+        await this.refreshList();
     }
 
     async fileChanged(files: FileList) {
+        this.loading = true;
         for (let i = 0; i < files.length; i++) {
             const fileToUpload = files.item(i);
             const formFile: FileParameter = {
@@ -41,17 +41,26 @@ export class FilesComponent extends AppComponentBase implements OnInit {
             // this.http.post('https://localhost:44311/api/services/app/UserFile/UploadFile',
             //     formData).subscribe((response) => console.log(response), error => console.log(error));
         }
+        this.loading = false;
     }
 
     async refreshList(action?: FileAction) {
         this.loading = true;
         this.fileList = await firstValueFrom(this.fileService.getAllFilesByUserId(this.appSession.userId));
         this.sortList();
+        this.getTotalSize();
         this.loading = false;
     }
 
+    getTotalSize() {
+        this.totalSize = 0;
+        for (const fileListElement of this.fileList) {
+            this.totalSize += fileListElement.fileSize;
+        }
+    }
+
     sortList() {
-        this.fileList = this.fileList.sort((a, b) => a.fileName < b.fileName ? 1 : a.fileName === b.fileName ? 0 : -1);
+        this.fileList = this.fileList.sort((a, b) => a.fileName > b.fileName ? 1 : a.fileName === b.fileName ? 0 : -1);
     }
 
     clearInformation() {

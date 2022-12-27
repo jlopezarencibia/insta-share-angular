@@ -37,13 +37,16 @@
                         <div class="small">Rename:</div>
                         <input class="form-control" name="newName" id="newName" [(ngModel)]="newName">
                     </form>
-                    <div class="d-flex align-items-center mt-2">
+                    <div class="d-flex align-items-center mt-3">
                         <button class="btn btn-success w-100 mr-2 d-flex align-items-center justify-content-center"
                                 (click)="edit()">
                             <i class="fas fa-check mr-1"></i>Confirm
                         </button>
-                        <button class="btn btn-danger" (click)="cancelEdit()"><i class="fas fa-cancel"></i></button>
+                        <button class="btn btn-danger" (click)="remove()"><i class="fas fa-trash-alt"></i></button>
                     </div>
+                    <button class="btn btn-outline-secondary w-100 mt-2" (click)="cancelEdit()">
+                       <span>Cancel</span>
+                    </button>
                 </ng-container>
             </ng-template>
         </ng-container>
