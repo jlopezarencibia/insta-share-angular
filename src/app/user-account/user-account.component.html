@@ -1,1 +1,72 @@
-<p>user-account works!</p>
+<div class="p-2 p-md-3">
+    <div class="row mx-0">
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">User information</span>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="userInformationForm">
+                        <div class="row mx-0">
+                            <div class="col-12 col-md-6 mb-3">
+                                <div>Name</div>
+                                <input formControlName="name" type="text" class="form-control w-100">
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <div>Surname</div>
+                                <input formControlName="surname" type="text" class="form-control w-100">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div>Email address</div>
+                                <input formControlName="email" type="email" class="form-control w-100">
+                            </div>
+                        </div>
+                    </form>
+                    <hr class="mt-4">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <button class="btn btn-primary d-flex align-items-center justify-content-center mr-2">
+                            <i class="fas fa-edit mr-2"></i>Edit
+                        </button>
+                        <button class="btn btn-secondary d-flex align-items-center justify-content-center">
+                            <i class="fas fa-close mr-2"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Security</span>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="userPasswordForm">
+                        <div class="row mx-0">
+                            <div class="col-12 col-md-6 mb-3">
+                                <div>Old password</div>
+                                <input formControlName="oldPassword" type="password" class="form-control w-100">
+                            </div>
+                            <div class="col-12 col-md-6 mb-3">
+                                <div>New password</div>
+                                <input formControlName="newPassword" type="password" class="form-control w-100">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div>New password confirm</div>
+                                <input formControlName="newPasswordConfirm" type="password" class="form-control w-100">
+                            </div>
+                        </div>
+                    </form>
+                    <hr class="mt-4">
+                    <div class="d-flex align-items-center justify-content-end">
+                        <button class="btn btn-primary d-flex align-items-center justify-content-center mr-2">
+                            <i class="fas fa-edit mr-2"></i>Edit
+                        </button>
+                        <button class="btn btn-secondary d-flex align-items-center justify-content-center">
+                            <i class="fas fa-close mr-2"></i> Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
