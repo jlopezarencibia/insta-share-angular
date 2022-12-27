@@ -1,1 +1,22 @@
-<p>files works!</p>
+<div class="p-2 p-md-3">
+    <div class="d-flex align-items-center justify-content-end">
+        <form>
+            <input type="file" #inputFile name="inputFile" multiple="multiple" class="d-none" (change)="fileChanged($event.target.files)">
+        </form>
+        <button class='btn btn-success d-flex align-items-center' (click)='inputFile.click()'>
+            <i class="fas fa-plus mr-1"></i>
+            <span class='d-none d-md-block ms-2'>Upload</span>
+        </button>
+    </div>
+    <hr>
+    <div class="row mx-0">
+        <div class="col-12 col-md-9"></div>
+        <div class="d-none d-md-block col-md-3">
+            <div class="card">
+                <div class="card-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
