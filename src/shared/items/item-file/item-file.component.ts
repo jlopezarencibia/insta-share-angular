@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BasicUaserFileDto} from '@shared/service-proxies/service-proxies';
+import {BasicUaserFileDto, FileStatus} from '@shared/service-proxies/service-proxies';
 import {invokeMap} from 'lodash-es';
 
 @Component({
@@ -14,6 +14,18 @@ export class ItemFileComponent implements OnInit {
 
     iconType: IconType = IconType.File;
     bgType: BgType = BgType.File;
+
+    get FileStatusPending() {
+        return FileStatus._1;
+    }
+
+    get FileStatusProcessing() {
+        return FileStatus._0;
+    }
+
+    get FileStatusReady() {
+        return FileStatus._2;
+    }
 
     ngOnInit(): void {
         this.getIconType();
@@ -46,7 +58,8 @@ export class ItemFileComponent implements OnInit {
                 this.bgType = BgType.Ppt;
                 break;
             case 'pdf':
-                this.iconType = IconType.PDF;this.bgType = BgType.PDF;
+                this.iconType = IconType.PDF;
+                this.bgType = BgType.PDF;
                 break;
             case 'zip':
             case 'gz':
@@ -63,7 +76,9 @@ export class ItemFileComponent implements OnInit {
                 this.iconType = IconType.Video;
                 this.bgType = BgType.Video;
                 break;
-            case 'mp3': case 'wav': case 'aac':
+            case 'mp3':
+            case 'wav':
+            case 'aac':
                 this.iconType = IconType.Audio;
                 this.bgType = BgType.Audio;
             case 'txt':

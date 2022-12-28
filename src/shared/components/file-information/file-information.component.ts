@@ -49,10 +49,10 @@ export class FileInformationComponent {
         this.loading = true;
         const file = await firstValueFrom(this.fileService.get(this.file.id));
         console.log(file);
-        const fileObj = new Blob([this.base64ToArrayBuffer(file.fileBytes)], {type: `application/${this.getFileExtension()}`});
+        const fileObj = new Blob([this.base64ToArrayBuffer(file.fileBytes)], {type: `application/octet-stream`});
         const link = document.createElement('a');
         link.href = window.URL.createObjectURL(fileObj);
-        link.download = file.fileName;
+        link.download = file.fileName + '.zip';
         link.click();
         link.remove();
         this.action.emit(FileAction.Download);

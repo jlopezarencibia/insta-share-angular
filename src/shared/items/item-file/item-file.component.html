@@ -11,5 +11,9 @@
             {{userFile.fileSize | size}}
         </div>
     </div>
-    <i class="fas fa-check"></i>
+    <i class="fas fa-check-circle" style="opacity: .5"
+       [ngClass]="{
+       'fa-check-circle text-success': userFile.fileStatus === FileStatusReady,
+       'fa-spinner fa-spin text-warning': userFile.fileStatus === FileStatusProcessing,
+       'fa-upload text-secondary': userFile.fileStatus === FileStatusPending}"></i>
 </div>
